@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		240BA5AF274AB6C200C29F89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5AE274AB6C200C29F89 /* AppDelegate.swift */; };
 		240BA5B1274AB6C200C29F89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5B0274AB6C200C29F89 /* SceneDelegate.swift */; };
-		240BA5B3274AB6C200C29F89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5B2274AB6C200C29F89 /* ViewController.swift */; };
-		240BA5B6274AB6C200C29F89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 240BA5B4274AB6C200C29F89 /* Main.storyboard */; };
 		240BA5B8274AB6C400C29F89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 240BA5B7274AB6C400C29F89 /* Assets.xcassets */; };
 		240BA5BB274AB6C400C29F89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 240BA5B9274AB6C400C29F89 /* LaunchScreen.storyboard */; };
 		240BA5C6274AB6C400C29F89 /* SocialMediaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5C5274AB6C400C29F89 /* SocialMediaTests.swift */; };
@@ -30,6 +28,11 @@
 		240BA5FD274AB86C00C29F89 /* PostDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5F7274AB86C00C29F89 /* PostDetailInteractor.swift */; };
 		240BA5FF274AB89800C29F89 /* PostList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 240BA5FE274AB89800C29F89 /* PostList.storyboard */; };
 		240BA601274AB8AB00C29F89 /* PostDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 240BA600274AB8AB00C29F89 /* PostDetail.storyboard */; };
+		240BA608274AD14F00C29F89 /* SimpleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA607274AD14F00C29F89 /* SimpleItemView.swift */; };
+		240BA60A274AD15E00C29F89 /* SimpleItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240BA609274AD15E00C29F89 /* SimpleItemView.xib */; };
+		240BA60C274ADAB700C29F89 /* SimpleItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA60B274ADAB700C29F89 /* SimpleItemViewModel.swift */; };
+		240BA651274AF42E00C29F89 /* SimpleItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA650274AF42E00C29F89 /* SimpleItemViewCell.swift */; };
+		240BA653274AF43C00C29F89 /* SimpleItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240BA652274AF43C00C29F89 /* SimpleItemViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,11 +56,8 @@
 		240BA5AB274AB6C200C29F89 /* SocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		240BA5AE274AB6C200C29F89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		240BA5B0274AB6C200C29F89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		240BA5B2274AB6C200C29F89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		240BA5B5274AB6C200C29F89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		240BA5B7274AB6C400C29F89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		240BA5BA274AB6C400C29F89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		240BA5BC274AB6C400C29F89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		240BA5C1274AB6C400C29F89 /* SocialMediaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialMediaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		240BA5C5274AB6C400C29F89 /* SocialMediaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaTests.swift; sourceTree = "<group>"; };
 		240BA5CB274AB6C400C29F89 /* SocialMediaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialMediaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +77,12 @@
 		240BA5F7274AB86C00C29F89 /* PostDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailInteractor.swift; sourceTree = "<group>"; };
 		240BA5FE274AB89800C29F89 /* PostList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostList.storyboard; sourceTree = "<group>"; };
 		240BA600274AB8AB00C29F89 /* PostDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostDetail.storyboard; sourceTree = "<group>"; };
+		240BA607274AD14F00C29F89 /* SimpleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleItemView.swift; sourceTree = "<group>"; };
+		240BA609274AD15E00C29F89 /* SimpleItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleItemView.xib; sourceTree = "<group>"; };
+		240BA60B274ADAB700C29F89 /* SimpleItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleItemViewModel.swift; sourceTree = "<group>"; };
+		240BA60E274AEB4B00C29F89 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		240BA650274AF42E00C29F89 /* SimpleItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleItemViewCell.swift; sourceTree = "<group>"; };
+		240BA652274AF43C00C29F89 /* SimpleItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleItemViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,15 +133,12 @@
 		240BA5AD274AB6C200C29F89 /* SocialMedia */ = {
 			isa = PBXGroup;
 			children = (
-				240BA5DE274AB74D00C29F89 /* Application */,
+				240BA64E274AF20D00C29F89 /* Application */,
 				240BA5DF274AB75D00C29F89 /* Business */,
 				240BA5E3274AB7E100C29F89 /* ViewControllers */,
 				240BA5E0274AB76D00C29F89 /* Storyboards */,
 				240BA5E1274AB79700C29F89 /* Network */,
 				240BA5E2274AB7A500C29F89 /* Resources */,
-				240BA5B2274AB6C200C29F89 /* ViewController.swift */,
-				240BA5B4274AB6C200C29F89 /* Main.storyboard */,
-				240BA5B7274AB6C400C29F89 /* Assets.xcassets */,
 				240BA5B9274AB6C400C29F89 /* LaunchScreen.storyboard */,
 			);
 			path = SocialMedia;
@@ -158,19 +161,10 @@
 			path = SocialMediaUITests;
 			sourceTree = "<group>";
 		};
-		240BA5DE274AB74D00C29F89 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				240BA5AE274AB6C200C29F89 /* AppDelegate.swift */,
-				240BA5B0274AB6C200C29F89 /* SceneDelegate.swift */,
-				240BA5BC274AB6C400C29F89 /* Info.plist */,
-			);
-			path = Application;
-			sourceTree = "<group>";
-		};
 		240BA5DF274AB75D00C29F89 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				240BA602274AD0E500C29F89 /* SimpleItemView */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -194,6 +188,7 @@
 		240BA5E2274AB7A500C29F89 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				240BA5B7274AB6C400C29F89 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -231,6 +226,36 @@
 				240BA5F7274AB86C00C29F89 /* PostDetailInteractor.swift */,
 			);
 			path = PostDetail;
+			sourceTree = "<group>";
+		};
+		240BA602274AD0E500C29F89 /* SimpleItemView */ = {
+			isa = PBXGroup;
+			children = (
+				240BA64F274AF41700C29F89 /* Cell */,
+				240BA607274AD14F00C29F89 /* SimpleItemView.swift */,
+				240BA609274AD15E00C29F89 /* SimpleItemView.xib */,
+				240BA60B274ADAB700C29F89 /* SimpleItemViewModel.swift */,
+			);
+			path = SimpleItemView;
+			sourceTree = "<group>";
+		};
+		240BA64E274AF20D00C29F89 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				240BA5B0274AB6C200C29F89 /* SceneDelegate.swift */,
+				240BA5AE274AB6C200C29F89 /* AppDelegate.swift */,
+				240BA60E274AEB4B00C29F89 /* Info.plist */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		240BA64F274AF41700C29F89 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				240BA650274AF42E00C29F89 /* SimpleItemViewCell.swift */,
+				240BA652274AF43C00C29F89 /* SimpleItemViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,8 +365,9 @@
 				240BA5FF274AB89800C29F89 /* PostList.storyboard in Resources */,
 				240BA5BB274AB6C400C29F89 /* LaunchScreen.storyboard in Resources */,
 				240BA5B8274AB6C400C29F89 /* Assets.xcassets in Resources */,
-				240BA5B6274AB6C200C29F89 /* Main.storyboard in Resources */,
+				240BA60A274AD15E00C29F89 /* SimpleItemView.xib in Resources */,
 				240BA601274AB8AB00C29F89 /* PostDetail.storyboard in Resources */,
+				240BA653274AF43C00C29F89 /* SimpleItemViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,8 +395,8 @@
 				240BA5EF274AB85200C29F89 /* PostListViewController.swift in Sources */,
 				240BA5FC274AB86C00C29F89 /* PostDetailViewController.swift in Sources */,
 				240BA5FD274AB86C00C29F89 /* PostDetailInteractor.swift in Sources */,
+				240BA608274AD14F00C29F89 /* SimpleItemView.swift in Sources */,
 				240BA5EB274AB85200C29F89 /* PostListPresenter.swift in Sources */,
-				240BA5B3274AB6C200C29F89 /* ViewController.swift in Sources */,
 				240BA5AF274AB6C200C29F89 /* AppDelegate.swift in Sources */,
 				240BA5B1274AB6C200C29F89 /* SceneDelegate.swift in Sources */,
 				240BA5ED274AB85200C29F89 /* PostListRouter.swift in Sources */,
@@ -378,7 +404,9 @@
 				240BA5F8274AB86C00C29F89 /* PostDetailPresenter.swift in Sources */,
 				240BA5FB274AB86C00C29F89 /* PostDetailModels.swift in Sources */,
 				240BA5EC274AB85200C29F89 /* PostListWorker.swift in Sources */,
+				240BA651274AF42E00C29F89 /* SimpleItemViewCell.swift in Sources */,
 				240BA5F9274AB86C00C29F89 /* PostDetailWorker.swift in Sources */,
+				240BA60C274ADAB700C29F89 /* SimpleItemViewModel.swift in Sources */,
 				240BA5EE274AB85200C29F89 /* PostListModels.swift in Sources */,
 				240BA5FA274AB86C00C29F89 /* PostDetailRouter.swift in Sources */,
 			);
@@ -417,14 +445,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		240BA5B4274AB6C200C29F89 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				240BA5B5274AB6C200C29F89 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		240BA5B9274AB6C400C29F89 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -487,7 +507,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -542,7 +562,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -563,9 +583,10 @@
 				INFOPLIST_FILE = SocialMedia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = PostList;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -575,7 +596,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -590,9 +611,10 @@
 				INFOPLIST_FILE = SocialMedia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = PostList;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,7 +624,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

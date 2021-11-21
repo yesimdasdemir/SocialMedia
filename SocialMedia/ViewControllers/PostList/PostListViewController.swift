@@ -19,6 +19,7 @@ final class PostListViewController: UIViewController, PostListDisplayLogic {
   var interactor: PostListBusinessLogic?
   var router: (NSObjectProtocol & PostListRoutingLogic & PostListDataPassing)?
 
+    @IBOutlet weak var tableView: UITableView!
     // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -50,7 +51,38 @@ final class PostListViewController: UIViewController, PostListDisplayLogic {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+      
+      navigationItem.title = "Posts"
+      tableView.dataSource = self
+      tableView.delegate = self
+      
+      registerTableViewCells()
   }
   
     // MARK: Routing
+}
+
+extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleItemViewCell") as? SimpleItemViewCell {
+            let viewModel = SimpleItemViewModel(id: 1,
+                                                userId: 1,
+                                                title: "Deneme",
+                                                subTitle: "deneme2")
+            cell.configure(with: viewModel)
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    private func registerTableViewCells() {
+        let nibName = String(describing: SimpleItemViewCell.self)
+        let cell = UINib(nibName: nibName, bundle: nil)
+        tableView.register(cell, forCellReuseIdentifier: "SimpleItemViewCell")
+    }
 }
