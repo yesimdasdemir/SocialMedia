@@ -12,32 +12,40 @@
 
 import UIKit
 
-@objc protocol PostListRoutingLogic {
-
+protocol PostListRoutingLogic {
+    func routeToPostDetail(viewModel: SimpleItemViewModel)
 }
 
 protocol PostListDataPassing {
-  var dataStore: PostListDataStore? { get }
+    var dataStore: PostListDataStore? { get }
 }
 
 final class PostListRouter: NSObject, PostListRoutingLogic, PostListDataPassing {
-  weak var viewController: PostListViewController?
-  var dataStore: PostListDataStore?
-  
-  // MARK: Routing
-  
-
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: PostListViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: PostListDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    
+    weak var viewController: PostListViewController?
+    var dataStore: PostListDataStore?
+    
+    // MARK: Routing
+    
+    func routeToPostDetail(viewModel: SimpleItemViewModel) {
+        let storyboard = UIStoryboard(name: "PostDetail", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "PostDetail") as! PostDetailViewController
+        var destinationDS = destinationVC.router!.dataStore!
+        
+        passDataToPostDetail(viewModel: viewModel, source: dataStore!, destination: &destinationDS)
+        navigateToPostDetail(source: viewController!, destination: destinationVC)
+       
+    }
+    
+    //   MARK: Navigation
+    
+    func navigateToPostDetail(source: PostListViewController, destination: PostDetailViewController) {
+        source.show(destination, sender: nil)
+    }
+    
+    //   MARK: Passing data
+    
+    func passDataToPostDetail(viewModel: SimpleItemViewModel, source: PostListDataStore, destination: inout PostDetailDataStore) {
+        destination.selectedPostModel = viewModel
+    }
 }

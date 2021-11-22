@@ -13,73 +13,88 @@
 import UIKit
 
 protocol PostListDisplayLogic: AnyObject {
+    func displayPostList(viewModel: [SimpleItemViewModel])
 }
 
 final class PostListViewController: UIViewController, PostListDisplayLogic {
-  var interactor: PostListBusinessLogic?
-  var router: (NSObjectProtocol & PostListRoutingLogic & PostListDataPassing)?
-
-    @IBOutlet weak var tableView: UITableView!
+    var interactor: PostListBusinessLogic?
+    var router: (NSObjectProtocol & PostListRoutingLogic & PostListDataPassing)?
+    
+    @IBOutlet private weak var tableView: UITableView!
     // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
+    
+    var postViewModel: [SimpleItemViewModel]?
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
     // MARK: Setup
-  
-  private func setup() {
-    let viewController = self
-    let interactor = PostListInteractor()
-    let presenter = PostListPresenter()
-    let router = PostListRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
+    
+    private func setup() {
+        let viewController = self
+        let interactor = PostListInteractor()
+        let presenter = PostListPresenter()
+        let router = PostListRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
     
     // MARK: View lifecycle
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-      
-      navigationItem.title = "Posts"
-      tableView.dataSource = self
-      tableView.delegate = self
-      
-      registerTableViewCells()
-  }
-  
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = "Lastest Posts"
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        registerTableViewCells()
+        interactor?.getPostList()
+    }
+    
+    func displayPostList(viewModel: [SimpleItemViewModel]) {
+        postViewModel = viewModel
+        tableView.reloadData()
+    }
+
     // MARK: Routing
 }
 
 extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return postViewModel?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleItemViewCell") as? SimpleItemViewCell {
-            let viewModel = SimpleItemViewModel(id: 1,
-                                                userId: 1,
-                                                title: "Deneme",
-                                                subTitle: "deneme2")
-            cell.configure(with: viewModel)
-            return cell
+            if let postModel = postViewModel?[indexPath.row] {
+                cell.configure(with: postModel)
+                return cell
+            }
         }
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedItem = postViewModel?[indexPath.row] else {
+            return
+        }
+        
+        router?.routeToPostDetail(viewModel: selectedItem)
+    }
+
     private func registerTableViewCells() {
         let nibName = String(describing: SimpleItemViewCell.self)
         let cell = UINib(nibName: nibName, bundle: nil)

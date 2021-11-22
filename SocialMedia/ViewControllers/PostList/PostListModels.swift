@@ -13,19 +13,25 @@
 import UIKit
 
 enum PostList {
-  // MARK: Use cases
-  
-  enum Something {
-    struct Request
-    {
+    // MARK: Use cases
+    
+    enum GetPostList {
+        struct Request: Codable {
+            let transactionUrl: String
+            
+            init() {
+                self.transactionUrl = "http://jsonplaceholder.typicode.com/posts"
+            }
+        }
+        
+        struct Response: Codable {
+            let userId: Int
+            let id: Int
+            let title: String
+            let body: String
+        }
+        
+        struct ViewModel {
+        }
     }
-      
-    struct Response
-    {
-    }
-      
-    struct ViewModel
-    {
-    }
-  }
 }

@@ -13,10 +13,20 @@
 import UIKit
 
 protocol PostListPresentationLogic {
+    func presentPostList(with response: [PostList.GetPostList.Response])
 }
 
 final class PostListPresenter: PostListPresentationLogic {
-  weak var viewController: PostListDisplayLogic?
-  
+    weak var viewController: PostListDisplayLogic?
     
+    func presentPostList(with response: [PostList.GetPostList.Response]) {
+        let viewModel = response.map { response in
+            return SimpleItemViewModel(id: response.id,
+                                       userId: response.userId,
+                                       title: response.title.uppercased(),
+                                       subTitle: response.body.capitalized)
+        }
+        
+        viewController?.displayPostList(viewModel: viewModel)
+    }
 }

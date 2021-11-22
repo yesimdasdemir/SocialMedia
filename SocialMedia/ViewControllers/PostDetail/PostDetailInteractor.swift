@@ -16,12 +16,13 @@ protocol PostDetailBusinessLogic {
 }
 
 protocol PostDetailDataStore {
-  //var name: String { get set }
+    var selectedPostModel: SimpleItemViewModel? { get set }
 }
 
 final class PostDetailInteractor: PostDetailBusinessLogic, PostDetailDataStore {
-  var presenter: PostDetailPresentationLogic?
-  var worker: PostDetailWorker?
-  //var name: String = ""
-  
+    
+    var presenter: PostDetailPresentationLogic?
+    var worker: PostDetailWorker?
+    var selectedPostModel: SimpleItemViewModel?
+    
 }

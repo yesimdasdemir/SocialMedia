@@ -10,15 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SimpleItemViewCell" rowHeight="118" id="QAT-H4-oVm" customClass="SimpleItemViewCell" customModule="SocialMedia" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="348" height="118"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SimpleItemViewCell" rowHeight="140" id="QAT-H4-oVm" customClass="SimpleItemViewCell" customModule="SocialMedia" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="348" height="140"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QAT-H4-oVm" id="lzm-F9-G8D">
-                <rect key="frame" x="0.0" y="0.0" width="348" height="118"/>
+                <rect key="frame" x="0.0" y="0.0" width="348" height="140"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUb-KI-n51" customClass="SimpleItemView" customModule="SocialMedia" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="348" height="118"/>
+                        <rect key="frame" x="0.0" y="0.0" width="348" height="140"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </subviews>
@@ -32,7 +32,7 @@
             <connections>
                 <outlet property="simpleItemView" destination="zUb-KI-n51" id="P9P-8d-68F"/>
             </connections>
-            <point key="canvasLocation" x="84.057971014492765" y="64.285714285714278"/>
+            <point key="canvasLocation" x="84.057971014492765" y="70.982142857142847"/>
         </tableViewCell>
     </objects>
     <resources>

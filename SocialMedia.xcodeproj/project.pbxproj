@@ -33,6 +33,7 @@
 		240BA60C274ADAB700C29F89 /* SimpleItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA60B274ADAB700C29F89 /* SimpleItemViewModel.swift */; };
 		240BA651274AF42E00C29F89 /* SimpleItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA650274AF42E00C29F89 /* SimpleItemViewCell.swift */; };
 		240BA653274AF43C00C29F89 /* SimpleItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240BA652274AF43C00C29F89 /* SimpleItemViewCell.xib */; };
+		240BA655274C1D7A00C29F89 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA654274C1D7A00C29F89 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		240BA60E274AEB4B00C29F89 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		240BA650274AF42E00C29F89 /* SimpleItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleItemViewCell.swift; sourceTree = "<group>"; };
 		240BA652274AF43C00C29F89 /* SimpleItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleItemViewCell.xib; sourceTree = "<group>"; };
+		240BA654274C1D7A00C29F89 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		240BA5E1274AB79700C29F89 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				240BA654274C1D7A00C29F89 /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				240BA655274C1D7A00C29F89 /* NetworkManager.swift in Sources */,
 				240BA5EF274AB85200C29F89 /* PostListViewController.swift in Sources */,
 				240BA5FC274AB86C00C29F89 /* PostDetailViewController.swift in Sources */,
 				240BA5FD274AB86C00C29F89 /* PostDetailInteractor.swift in Sources */,
