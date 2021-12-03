@@ -3,129 +3,50 @@
 //  SocialMedia
 //
 //  Created by Yeşim Daşdemir on 22.11.2021.
-//
+//s
 
-/*import UIKit
+import UIKit
+import Foundation
 
-public enum HTTPMethod: String {
-    case post = "POST"
-    case get = "GET"
-}
-
-public enum NetworkError: Error {
-    case error(statusCode: Int, data: Data?)
-    case notConnected
-    case cancelled
-    case generic(Error)
-    case urlGeneration
-}
-
-public protocol NetworkCancellable {
-    func cancel()
-}
-
-
-extension URLSessionTask: NetworkCancellable { }
-
-public protocol NetworkService {
-    typealias CompletionHandler = (Result<Data?, NetworkError>) -> Void
+struct NetworkManager {
     
-    func request(endpoint: Requestable, completion: @escaping CompletionHandler) -> NetworkCancellable?
-}
+    static func fetchData<T: Codable>(url : String, completion : @escaping (T) -> ()) {
+        guard NetworkMonitor.shared.isConnected else {
+            AlertUtils.shared.showAlert(title: "Error", message: "No connection.")
+            NetworkMonitor.shared.stopMonitoring()
+            return
+        }
 
-public protocol NetworkSessionManager {
-    typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
-    
-    func request(_ request: URLRequest,
-                 completion: @escaping CompletionHandler) -> NetworkCancellable
-}
-
-public protocol NetworkErrorLogger {
-    func log(request: URLRequest)
-    func log(responseData data: Data?, response: URLResponse?)
-    func log(error: Error)
-}
-
-public protocol NetworkService {
-    typealias CompletionHandler = (Result<Data?, NetworkError>) -> Void
-    
-    func request(endpoint: Requestable, completion: @escaping CompletionHandler) -> NetworkCancellable?
-}
-
-public protocol NetworkSessionManager {
-    typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
-    
-    func request(_ request: URLRequest,
-                 completion: @escaping CompletionHandler) -> NetworkCancellable
-}
-
-public protocol NetworkErrorLogger {
-    func log(request: URLRequest)
-    func log(responseData data: Data?, response: URLResponse?)
-    func log(error: Error)
-}
-
-
-public final class DefaultNetworkService {
-    
-    private let config: NetworkConfigurable
-    private let sessionManager: NetworkSessionManager
-    private let logger: NetworkErrorLogger
-    
-    public init(config: NetworkConfigurable,
-                sessionManager: NetworkSessionManager = DefaultNetworkSessionManager(),
-                logger: NetworkErrorLogger = DefaultNetworkErrorLogger()) {
-        self.sessionManager = sessionManager
-        self.config = config
-        self.logger = logger
-    }
-    
-    private func request(request: URLRequest, completion: @escaping CompletionHandler) -> NetworkCancellable {
+        let sessionURL = URL(string: url)
+        let session = URLSession.shared
         
-        let sessionDataTask = sessionManager.request(request) { data, response, requestError in
-            
-            if let requestError = requestError {
-                var error: NetworkError
-                if let response = response as? HTTPURLResponse {
-                    error = .error(statusCode: response.statusCode, data: data)
-                } else {
-                    error = self.resolve(error: requestError)
-                }
+        if let url = sessionURL {
+            let task = session.dataTask(with: url) { (data, response, error) in
                 
-                self.logger.log(error: error)
-                completion(.failure(error))
-            } else {
-                self.logger.log(responseData: data, response: response)
-                completion(.success(data))
+                if error != nil {
+                    let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(okButton)
+                    
+                } else {
+                    
+                    if let data = data {
+                        
+                        do {
+                            let response = try JSONDecoder().decode(T.self, from: data)
+                            DispatchQueue.main.async {
+                             //   LoadingViewController.shared.hideLoading()
+                                completion(response)
+                                debugPrint(response)
+                            }
+                            
+                        } catch  {
+                            debugPrint(error)
+                        }
+                    }
+                }
             }
-        }
-    
-        logger.log(request: request)
-
-        return sessionDataTask
-    }
-    
-    private func resolve(error: Error) -> NetworkError {
-        let code = URLError.Code(rawValue: (error as NSError).code)
-        switch code {
-        case .notConnectedToInternet: return .notConnected
-        case .cancelled: return .cancelled
-        default: return .generic(error)
+            task.resume()
         }
     }
 }
-
-
-extension DefaultNetworkService: NetworkService {
-    
-    public func request(endpoint: Requestable, completion: @escaping CompletionHandler) -> NetworkCancellable? {
-        do {
-            let urlRequest = try endpoint.urlRequest(with: config)
-            return request(request: urlRequest, completion: completion)
-        } catch {
-            completion(.failure(.urlGeneration))
-            return nil
-        }
-    }
-}
-*/
