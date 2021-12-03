@@ -21,9 +21,12 @@ final class PostListViewController: UIViewController, PostListDisplayLogic {
     var router: (NSObjectProtocol & PostListRoutingLogic & PostListDataPassing)?
     
     @IBOutlet private weak var tableView: UITableView!
+    
     // MARK: Object lifecycle
     
-    var postViewModel: [SimpleItemViewModel]?
+    private var postViewModel: [SimpleItemViewModel]?
+    private let refreshControl = UIRefreshControl()
+    private let activityIndicatorView = UIActivityIndicatorView()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -47,7 +50,6 @@ final class PostListViewController: UIViewController, PostListDisplayLogic {
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
-        router.dataStore = interactor
     }
     
     // MARK: View lifecycle
@@ -60,6 +62,7 @@ final class PostListViewController: UIViewController, PostListDisplayLogic {
         tableView.delegate = self
         
         registerTableViewCells()
+        addRefreshControl()
         interactor?.getPostList()
     }
     
@@ -68,7 +71,21 @@ final class PostListViewController: UIViewController, PostListDisplayLogic {
         tableView.reloadData()
     }
 
-    // MARK: Routing
+    private func addRefreshControl() {
+        tableView.refreshControl = refreshControl
+        
+        refreshControl.addTarget(self, action: #selector(refreshPosts), for: .valueChanged)
+    }
+    
+    @objc
+    private func refreshPosts() {
+        if Storage.fileExists("postList", in: .caches) {
+            Storage.remove("postList", from: .caches)
+            activityIndicatorView.stopAnimating()
+            refreshControl.endRefreshing()
+            interactor?.getPostList()
+        }
+    }
 }
 
 extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -81,10 +98,19 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleItemViewCell") as? SimpleItemViewCell {
             if let postModel = postViewModel?[indexPath.row] {
                 cell.configure(with: postModel)
+                cell.selectionStyle = .none
                 return cell
             }
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -94,7 +120,7 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
         
         router?.routeToPostDetail(viewModel: selectedItem)
     }
-
+    
     private func registerTableViewCells() {
         let nibName = String(describing: SimpleItemViewCell.self)
         let cell = UINib(nibName: nibName, bundle: nil)

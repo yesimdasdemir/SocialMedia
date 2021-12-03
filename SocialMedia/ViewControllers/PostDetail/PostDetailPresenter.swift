@@ -13,9 +13,41 @@
 import UIKit
 
 protocol PostDetailPresentationLogic {
+    func presentPostDetail(viewModel: PostDetailViewModel)
 }
 
 final class PostDetailPresenter: PostDetailPresentationLogic {
-  weak var viewController: PostDetailDisplayLogic?
-
+    weak var viewController: PostDetailDisplayLogic?
+    
+    private var commentCount: Int = 0
+    
+    func presentPostDetail(viewModel: PostDetailViewModel) {
+        var tableViewRows: [PostDetailTableViewRows] = []
+        
+        if let userViewModel = viewModel.userViewModel {
+            let singleImageViewModel =  SingleImageViewModel(id: userViewModel.id,
+                                            iconName: "share-post",
+                                                             title: userViewModel.name?.capitalized)
+            
+            tableViewRows.append(.profileCell(viewModel: singleImageViewModel))
+        }
+        
+        if let description: String = viewModel.postDescription {
+            let singleImageViewModel = SimpleItemViewModel(subTitle: description.capitalized)
+            tableViewRows.append(.descriptionCell(description: singleImageViewModel))
+        }
+           
+        if let commentsModel = viewModel.commentsViewModel {
+            tableViewRows.append(.commentSummaryCell(viewModel: SimpleItemViewModel(title: "\(commentsModel.count) Comments", iconName: "dots")))
+            
+            commentCount = commentsModel.count
+            
+            for item in commentsModel {
+                tableViewRows.append(.commentCell(viewModel: SimpleItemViewModel(id: item.id,
+                                                                                 title: item.description,
+                                                                                 iconName: "comment")))
+            }
+        }
+        viewController?.displayPostDetail(rowList: tableViewRows, commentCount: commentCount)
+    }
 }

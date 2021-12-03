@@ -13,16 +13,61 @@
 import UIKit
 
 enum PostDetail {
-  // MARK: Use cases
-  
-  enum Something {
-    struct Request {
+    // MARK: Use cases
+    
+    enum GetUsers {
+        struct Request: Codable {
+            let transactionUrl: String
+            
+            init() {
+                self.transactionUrl = "http://jsonplaceholder.typicode.com/users"
+            }
+        }
+        
+        struct Response: Codable {
+            let id: Int
+            let name: String?
+            let username: String?
+            let email: String?
+        }
     }
-      
-    struct Response {
+    
+    enum GetComments {
+        struct Request: Codable {
+            let transactionUrl: String
+            
+            init() {
+                self.transactionUrl = "http://jsonplaceholder.typicode.com/comments"
+            }
+        }
+        
+        struct Response: Codable {
+            let id: Int
+            let postId: Int?
+            let name: String?
+            let email: String?
+            let description: String?
+            
+            enum CodingKeys: String, CodingKey {
+                case id
+                case postId
+                case name
+                case email
+                case description = "body"
+            }
+        }
     }
-      
-    struct ViewModel {
-    }
-  }
+}
+
+struct PostDetailViewModel {
+    let userViewModel: PostDetail.GetUsers.Response?
+    let commentsViewModel: [PostDetail.GetComments.Response]?
+    let postDescription: String?
+}
+
+enum PostDetailTableViewRows {
+    case profileCell(viewModel: SingleImageViewModel?)
+    case descriptionCell(description: SimpleItemViewModel?)
+    case commentSummaryCell(viewModel: SimpleItemViewModel?)
+    case commentCell(viewModel: SimpleItemViewModel?)
 }

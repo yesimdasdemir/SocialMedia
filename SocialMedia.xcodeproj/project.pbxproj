@@ -15,13 +15,11 @@
 		240BA5D0274AB6C400C29F89 /* SocialMediaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5CF274AB6C400C29F89 /* SocialMediaUITests.swift */; };
 		240BA5D2274AB6C400C29F89 /* SocialMediaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5D1274AB6C400C29F89 /* SocialMediaUITestsLaunchTests.swift */; };
 		240BA5EB274AB85200C29F89 /* PostListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5E5274AB85200C29F89 /* PostListPresenter.swift */; };
-		240BA5EC274AB85200C29F89 /* PostListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5E6274AB85200C29F89 /* PostListWorker.swift */; };
 		240BA5ED274AB85200C29F89 /* PostListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5E7274AB85200C29F89 /* PostListRouter.swift */; };
 		240BA5EE274AB85200C29F89 /* PostListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5E8274AB85200C29F89 /* PostListModels.swift */; };
 		240BA5EF274AB85200C29F89 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5E9274AB85200C29F89 /* PostListViewController.swift */; };
 		240BA5F0274AB85200C29F89 /* PostListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5EA274AB85200C29F89 /* PostListInteractor.swift */; };
 		240BA5F8274AB86C00C29F89 /* PostDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5F2274AB86C00C29F89 /* PostDetailPresenter.swift */; };
-		240BA5F9274AB86C00C29F89 /* PostDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5F3274AB86C00C29F89 /* PostDetailWorker.swift */; };
 		240BA5FA274AB86C00C29F89 /* PostDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5F4274AB86C00C29F89 /* PostDetailRouter.swift */; };
 		240BA5FB274AB86C00C29F89 /* PostDetailModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5F5274AB86C00C29F89 /* PostDetailModels.swift */; };
 		240BA5FC274AB86C00C29F89 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BA5F6274AB86C00C29F89 /* PostDetailViewController.swift */; };
@@ -70,13 +68,11 @@
 		240BA5CF274AB6C400C29F89 /* SocialMediaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaUITests.swift; sourceTree = "<group>"; };
 		240BA5D1274AB6C400C29F89 /* SocialMediaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		240BA5E5274AB85200C29F89 /* PostListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListPresenter.swift; sourceTree = "<group>"; };
-		240BA5E6274AB85200C29F89 /* PostListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListWorker.swift; sourceTree = "<group>"; };
 		240BA5E7274AB85200C29F89 /* PostListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListRouter.swift; sourceTree = "<group>"; };
 		240BA5E8274AB85200C29F89 /* PostListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListModels.swift; sourceTree = "<group>"; };
 		240BA5E9274AB85200C29F89 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		240BA5EA274AB85200C29F89 /* PostListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListInteractor.swift; sourceTree = "<group>"; };
 		240BA5F2274AB86C00C29F89 /* PostDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailPresenter.swift; sourceTree = "<group>"; };
-		240BA5F3274AB86C00C29F89 /* PostDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailWorker.swift; sourceTree = "<group>"; };
 		240BA5F4274AB86C00C29F89 /* PostDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailRouter.swift; sourceTree = "<group>"; };
 		240BA5F5274AB86C00C29F89 /* PostDetailModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailModels.swift; sourceTree = "<group>"; };
 		240BA5F6274AB86C00C29F89 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
@@ -225,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				240BA5E5274AB85200C29F89 /* PostListPresenter.swift */,
-				240BA5E6274AB85200C29F89 /* PostListWorker.swift */,
 				240BA5E7274AB85200C29F89 /* PostListRouter.swift */,
 				240BA5E8274AB85200C29F89 /* PostListModels.swift */,
 				240BA5E9274AB85200C29F89 /* PostListViewController.swift */,
@@ -238,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				240BA5F2274AB86C00C29F89 /* PostDetailPresenter.swift */,
-				240BA5F3274AB86C00C29F89 /* PostDetailWorker.swift */,
 				240BA5F4274AB86C00C29F89 /* PostDetailRouter.swift */,
 				240BA5F5274AB86C00C29F89 /* PostDetailModels.swift */,
 				240BA5F6274AB86C00C29F89 /* PostDetailViewController.swift */,
@@ -449,9 +443,7 @@
 				240BA5F0274AB85200C29F89 /* PostListInteractor.swift in Sources */,
 				240BA5F8274AB86C00C29F89 /* PostDetailPresenter.swift in Sources */,
 				240BA5FB274AB86C00C29F89 /* PostDetailModels.swift in Sources */,
-				240BA5EC274AB85200C29F89 /* PostListWorker.swift in Sources */,
 				240BA651274AF42E00C29F89 /* SimpleItemViewCell.swift in Sources */,
-				240BA5F9274AB86C00C29F89 /* PostDetailWorker.swift in Sources */,
 				240BA60C274ADAB700C29F89 /* SimpleItemViewModel.swift in Sources */,
 				247607DE275A196D00FFF0EC /* AlertUtils.swift in Sources */,
 				240BA5EE274AB85200C29F89 /* PostListModels.swift in Sources */,

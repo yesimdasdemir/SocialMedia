@@ -13,6 +13,7 @@
 import UIKit
 
 protocol PostDetailBusinessLogic {
+    func getPostDetail()
 }
 
 protocol PostDetailDataStore {
@@ -23,6 +24,47 @@ final class PostDetailInteractor: PostDetailBusinessLogic, PostDetailDataStore {
     
     var presenter: PostDetailPresentationLogic?
     var worker: PostDetailWorker?
-    var selectedPostModel: SimpleItemViewModel?
+    var userId: Int = 0
+    var selectedPostModel: SimpleItemViewModel? {
+        didSet {
+            guard let userId = selectedPostModel?.userId else {
+                return
+            }
+            self.userId = userId
+        }
+    }
+    private var userViewModel: PostDetail.GetUsers.Response?
     
+    func getPostDetail() {
+        let url = "https://jsonplaceholder.typicode.com/users?id=\(userId)"
+        
+        NetworkManager.fetchData(url: url) { [weak self] (response: [PostDetail.GetUsers.Response]) in
+            guard let self = self, !response.isEmpty else {
+                return
+            }
+
+            self.userViewModel = response.first
+            self.getComments()
+            
+            debugPrint(response)
+        }
+    }
+    
+    func getComments() {
+        let url = "https://jsonplaceholder.typicode.com/posts/\(userId)/comments"
+        
+        LoadingViewController.shared.showLoading()
+        NetworkManager.fetchData(url: url) { [weak self] (response: [PostDetail.GetComments.Response]) in
+            guard let self = self, !response.isEmpty else {
+                return
+            }
+            LoadingViewController.shared.hideLoading()
+            
+            let postDetailViewModel = PostDetailViewModel(userViewModel: self.userViewModel,
+                                                          commentsViewModel: response,
+                                                          postDescription: self.selectedPostModel?.subTitle)
+            
+            self.presenter?.presentPostDetail(viewModel: postDetailViewModel)
+        }
+    }
 }

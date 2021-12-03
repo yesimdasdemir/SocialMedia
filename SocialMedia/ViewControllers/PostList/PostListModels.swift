@@ -15,7 +15,7 @@ import UIKit
 enum PostList {
     // MARK: Use cases
     
-    enum GetPostList {
+    enum GetPosts {
         struct Request: Codable {
             let transactionUrl: String
             

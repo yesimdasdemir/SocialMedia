@@ -13,18 +13,19 @@
 import UIKit
 
 protocol PostListPresentationLogic {
-    func presentPostList(with response: [PostList.GetPostList.Response])
+    func presentPostList(with response: [PostList.GetPosts.Response])
 }
 
 final class PostListPresenter: PostListPresentationLogic {
     weak var viewController: PostListDisplayLogic?
     
-    func presentPostList(with response: [PostList.GetPostList.Response]) {
+    func presentPostList(with response: [PostList.GetPosts.Response]) {
         let viewModel = response.map { response in
             return SimpleItemViewModel(id: response.id,
                                        userId: response.userId,
                                        title: response.title.uppercased(),
-                                       subTitle: response.body.capitalized)
+                                       subTitle: response.body.capitalized,
+                                       iconName: "profile")
         }
         
         viewController?.displayPostList(viewModel: viewModel)

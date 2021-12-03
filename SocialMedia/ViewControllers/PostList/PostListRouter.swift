@@ -32,7 +32,7 @@ final class PostListRouter: NSObject, PostListRoutingLogic, PostListDataPassing 
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "PostDetail") as! PostDetailViewController
         var destinationDS = destinationVC.router!.dataStore!
         
-        passDataToPostDetail(viewModel: viewModel, source: dataStore!, destination: &destinationDS)
+        passDataToPostDetail(viewModel: viewModel, destination: &destinationDS)
         navigateToPostDetail(source: viewController!, destination: destinationVC)
        
     }
@@ -45,7 +45,7 @@ final class PostListRouter: NSObject, PostListRoutingLogic, PostListDataPassing 
     
     //   MARK: Passing data
     
-    func passDataToPostDetail(viewModel: SimpleItemViewModel, source: PostListDataStore, destination: inout PostDetailDataStore) {
+    func passDataToPostDetail(viewModel: SimpleItemViewModel, destination: inout PostDetailDataStore) {
         destination.selectedPostModel = viewModel
     }
 }

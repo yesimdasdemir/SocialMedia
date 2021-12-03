@@ -13,55 +13,39 @@
 import UIKit
 
 protocol PostListBusinessLogic {
-   func getPostList()
+    func getPostList()
 }
 
 protocol PostListDataStore {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 final class PostListInteractor: PostListBusinessLogic, PostListDataStore {
-  var presenter: PostListPresentationLogic?
-  var worker: PostListWorker?
-
+    var presenter: PostListPresentationLogic?
+    var worker: PostListWorker?
+    
     func getPostList() {
         
-        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")
+        let url = "https://jsonplaceholder.typicode.com/posts"
+        LoadingViewController.shared.showLoading()
         
-        let session = URLSession.shared
-        
-        if let url = url {
-            let task = session.dataTask(with: url) { (data, response, error) in
-                
-                if error != nil {
-                    let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    alert.addAction(okButton)
-                    
-                } else {
-                    
-                    if let data = data {
-                        
-                        do {
-                            let response = try JSONDecoder().decode([PostList.GetPostList.Response].self, from: data)
-                            DispatchQueue.main.async { [weak self] in
-                                guard let self = self else {
-                                    return
-                                }
-                                
-                                self.presenter?.presentPostList(with: response)
-                                debugPrint(response)
-                            }
-                            
-                        } catch  {
-                            debugPrint(error)
-                        }
-                    }
+        if Storage.fileExists("postList", in: .caches) {
+            LoadingViewController.shared.hideLoading()
+            
+            let savedResponse = Storage.retrieve("postList", from: .caches, as: [PostList.GetPosts.Response].self)
+            self.presenter?.presentPostList(with: savedResponse)
+            
+        } else {
+            NetworkManager.fetchData(url: url) { [weak self] (response: [PostList.GetPosts.Response]) in
+                guard let self = self, !response.isEmpty else {
+                    return
                 }
+                LoadingViewController.shared.hideLoading()
+                Storage.store(response.self, to: .caches, as: "postList")
+                
+                self.presenter?.presentPostList(with: response)
+                debugPrint(response)
             }
-            task.resume()
         }
     }
-
-    
 }
