@@ -12,11 +12,13 @@ struct SimpleItemViewModel {
     let userId: Int?
     let title: String?
     let subTitle: String?
+    let iconName: String?
     
-    init(id: Int? = nil, userId: Int? = nil, title: String? = nil, subTitle: String? = nil) {
+    init(id: Int? = nil, userId: Int? = nil, title: String? = nil, subTitle: String? = nil, iconName: String? = nil) {
         self.id = id
         self.userId = userId
         self.title = title
         self.subTitle = subTitle
+        self.iconName = iconName
     }
 }
