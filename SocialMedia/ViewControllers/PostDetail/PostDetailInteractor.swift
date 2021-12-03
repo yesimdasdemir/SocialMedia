@@ -23,7 +23,6 @@ protocol PostDetailDataStore {
 final class PostDetailInteractor: PostDetailBusinessLogic, PostDetailDataStore {
     
     var presenter: PostDetailPresentationLogic?
-    var worker: PostDetailWorker?
     var userId: Int = 0
     var selectedPostModel: SimpleItemViewModel? {
         didSet {

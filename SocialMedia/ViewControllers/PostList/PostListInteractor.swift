@@ -22,7 +22,6 @@ protocol PostListDataStore {
 
 final class PostListInteractor: PostListBusinessLogic, PostListDataStore {
     var presenter: PostListPresentationLogic?
-    var worker: PostListWorker?
     
     func getPostList() {
         
