@@ -8,6 +8,9 @@
 import UIKit
 import Foundation
 
+/**
+I need to improve this class and connection error control.
+*/
 struct NetworkManager {
     
     static func fetchData<T: Codable>(url : String, completion : @escaping (T) -> ()) {

@@ -10,6 +10,10 @@
 //  see http://clean-swift.com
 //
 
+/**
+I choise clean swift architecture. It is readeble and testable. Easy to maianteance.
+*/
+
 import UIKit
 
 protocol PostDetailDisplayLogic: AnyObject {
